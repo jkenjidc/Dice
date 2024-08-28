@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension ContentView {
     @Observable
@@ -18,7 +19,7 @@ extension ContentView {
         var rollResult = 1
         let dimension = CGFloat(300)
         var showList = false
-        var disabled = false
+        var rollAnimation = false
         var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
         
@@ -27,16 +28,18 @@ extension ContentView {
         }
         
         func startTimer() {
+//            let impactHeavy = UIImpactFeedbackGenerator(style: .medium)
+//            impactHeavy.impactOccurred()
             timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
             timeLeft = 5
-            disabled =  true
+            rollAnimation =  true
         }
         
         func randomizer() {
             rollResult = Int.random(in: 1..<facesAmount[diceFaces] + 1)
             timeLeft -= 1
             if timeLeft == 0 {
-                disabled = false
+                rollAnimation = false
                 stopTimer()
                 rollDice()
             }
