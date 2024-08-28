@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationStack{
             VStack(spacing: 60) {
                 Text(String(viewModel.rollResult))
-                    .font(.system(size: 200))
+                    .font(.system(size: 180))
                     .frame(width: viewModel.dimension, height: viewModel.dimension)
                     .foregroundStyle(.black)
                     .overlay(
